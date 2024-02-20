@@ -20,6 +20,7 @@ const matrizAdyNodos = [[0, 1, 1, 1, 0, 0, 0, 1],
                         [0, 1, 1, 0, 1, 0, 0, 1],
                         [1, 1, 0, 1, 0, 1, 1, 0]];
 
+var nodoIni;             //Almacena el nodo de origen desde donde comienza el recorrido
 var nodoAct;             //Almacena el nodo en que se encuentra actualmente
 var nodosVisit = [];     //Almacena un array al que se le van a agregando los nodos que se visiten
 var nodoSelec;           //Almacena un nodo seleccionado en base a una condicion o una funcion
@@ -27,3 +28,6 @@ var costNdoAct;          //Almacena el costo del nodo actual
 var rutaActual = [];     //Almacena los nodos que se vayan visitando, simulando asi la ruta seguida
 var costRuta;            //Almacena el costo de la ruta
 var iEme;                //Iterador de emergencia en caso de que el bucle de vueltas de mas
+
+//INDICAR NODO INICIAL
+nodoIni = 5;    //De momento lo asiganamos de manera manual para enfocarnos primeramente en el funcionamiento (5 para trabajar con el nodo F segun la matriz)
