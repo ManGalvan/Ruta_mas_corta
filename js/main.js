@@ -44,22 +44,17 @@ nodoIni = prompt("Ingresa el nodo incial");
 //COMIENZO DE LA LOGICA
 nodoAct = nodoIni;
 
-//Obtener el valor que sea menor
-const getValMenor = (val1, val2) => {
-
-}
-
 //Verificar posibles caminos de un nodo y retornar el camino mas corto
 const checkWays = (node) => {
-    let countWays = Object.keys(conexiones[node]).length;   //Cuenta los caminos posibles
+    let countWays = Object.keys(conexiones[node]).length;   //Cuenta los caminos posibles que tiene un nodo
     if(countWays > 1){
-        let nodo = Object.values(conexiones[node]);
-        let valMen, val1, val2;
-        for(let i = 0; i < countWays; i++){
-            val1 = nodo[i];
-            val2 = nodo[i+1];        
-            if(val1 < val2){
-                if(valMen === undefined){
+        let nodo = Object.values(conexiones[node]);         //Almacena las conexiones directas de un nodo en un array
+        let valMen, val1, val2;                            //Variables que servirán en la comparación de los diferentes costos en la interación del bucle
+        for(let i = 0; i < countWays; i++){                //Se recorren todos los caminos
+            val1 = nodo[i];                                //Inicializamos el val1 en la posición i del array de caminos
+            val2 = nodo[i+1];                              //Inicializamos el val1 en la posición i+1 del array de caminos
+            if(val1 < val2){    //Compara si el val1 es menor que el val2
+                if(valMen === undefined){   
                     valMen = val1;
                 }
                 if(val1 < valMen){
@@ -67,7 +62,7 @@ const checkWays = (node) => {
                 } else {
                     continue;
                 }
-            } else if(val2 < val1){
+            } else if(val2 < val1){     //En caso de que no, compara si el val2 es menor que val1
                 if(valMen === undefined){
                     valMen = val2;
                 }
@@ -76,7 +71,7 @@ const checkWays = (node) => {
                 } else {
                     continue;
                 }
-            } else if(val2 === val1){
+            } else if(val2 === val1){   //En caso de que no, compara si ambos valores son exactamente iguales
                 if(valMen === undefined){
                     valMen = val1;
                 }
@@ -85,13 +80,13 @@ const checkWays = (node) => {
                 } else {
                     continue;
                 }
-            } else if(val2 === undefined){
+            } else if(val2 === undefined){  //En caso de que no, verifica si val2 está definido
                 if(val1 < valMen){
-                    valMen = val1;
+                    valMen = val1;      //Si no está definido se sobreentiende que ya no hay más valores para iterar, por lo que valMen toma el valor de val1
                 }
             }
         }
-        return valMen;
+        return valMen;  //Retorna el valor mínimo encontrado entre todos los caminos que tiene disponibles un nodo
     }
 }
 
